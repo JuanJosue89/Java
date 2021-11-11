@@ -50,6 +50,33 @@ class LinkedList {
 
     }
 
+    void deleteAt(int position) {
+        Node3 tempPtr = head;
+        int tempPosition = 0;
+
+        if(position < this.length()){
+            if (head == null) {
+
+            }
+            else if ((head.nextNode == null) && (position == 0)) {
+                head = null;
+            }
+            else if (position == 0) {
+                head = head.nextNode;
+            }
+            else {
+                while((tempPosition < (position-1)) && (tempPtr.nextNode.nextNode != null)) {
+                    tempPtr = tempPtr.nextNode;
+                    tempPosition++;
+                }
+                if(tempPosition == (position - 1)){
+                    tempPtr.nextNode = tempPtr.nextNode.nextNode;
+                }
+            }
+
+        }
+    }
+
     public String toString() {
         Node3 tempPtr;
         tempPtr = head;
@@ -73,5 +100,10 @@ public class LinkedListDemoInsDel {
         aLinkedList.insertAt(3, 2);
         System.out.println(aLinkedList);
         System.out.println("Largo de Lista: " + aLinkedList.length());
+
+        aLinkedList.deleteAt(2);
+        aLinkedList.deleteAt(0);
+        aLinkedList.insertAt(19, 2);
+        System.out.println(aLinkedList);
     }
 }
